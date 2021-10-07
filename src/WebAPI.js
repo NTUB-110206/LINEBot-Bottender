@@ -10,7 +10,7 @@ const getNews = async () => {
     console.log(res)
     return res
   } catch (error) {
-    return "error";
+    return handle_Error(error);
   }
 };
 
@@ -24,8 +24,25 @@ const chatbot = async (context) => {
     })
     return res
   } catch (error) {
-    return "error";
+    return handle_Error(error);
   }
 };
+
+const handle_Error = (error) => {
+  console.log(error)
+  if (error.response) {
+      // Request made and server responded
+      console.log("response");
+      console.log(error.response.data+"\n"+error.response.status+"\n"+error.response.headers);
+  } else if (error.request) {
+      // The request was made but no response was received
+      console.log("request");
+      console.log(error.request);
+  } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log("Error");
+      console.log(error.message);
+  }
+}
 
 module.exports = { getNews, chatbot }
