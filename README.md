@@ -6,12 +6,20 @@
 - LINE_ACCESS_TOKEN
 - LINE_CHANNEL_SECRET
 
-### requirements package
+#### requirements package
 ```
 npm i
 ```
 
-### Start
+### using bottender dev you need to change package.js: 
 ```
-npm start
+"scripts": {
+    "dev": "bottender dev",
+    "start": "bottender start",
+}
+
+```
+### Start bottender dev
+```
+npm run dev -- --console
 ```
