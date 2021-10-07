@@ -1,4 +1,4 @@
-# backend-flask
+# LINEBot-Bottender
 
 ### env
 #### You must fill the following variables in your .env file:
