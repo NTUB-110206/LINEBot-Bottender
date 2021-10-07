@@ -15,7 +15,7 @@ async function News(context) {
     news = result.data['news']
     let reply = ""
     news.map(news => {
-      reply += news['news_id'] + "\n" + news['news_website'] + "\n" + news['news_title'] + "\n" + news['news_content'] + "\n\n"
+      reply += news['news_id'] + "\n" + news['news_website'] + "\n" + news?.category?.category_label + "\n" + news?.trend?.trend_label + "\n" + news['news_title'] + "\n" + news['news_content'] + "\n" + news['news_content'] + "\n" + news['news_link'] + "\n\n"
     })
     await context.sendText(reply);
   }

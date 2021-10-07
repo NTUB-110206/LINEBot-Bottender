@@ -4,7 +4,7 @@ const backend_SERVERURL = process.env.Heroku_backend
 
 const getNews = async () => {
   try {
-    let res = await axios.get(backend_SERVERURL + `/`, {
+    let res = await axios.get(backend_SERVERURL + `/newslist?limit=5`, {
       headers: { "content-type": "application/json" }
     })
     return res
