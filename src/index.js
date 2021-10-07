@@ -13,7 +13,6 @@ async function News(context) {
   let news = []
   if (result?.status == 200 && result?.data) {
     news = result.data['news']
-    console.log(news)
     let reply = ""
     news.map(news => {
       reply += news['news_id'] + "\n" + news['news_website'] + "\n" + news['news_title'] + "\n" + news['news_content'] + "\n\n"
