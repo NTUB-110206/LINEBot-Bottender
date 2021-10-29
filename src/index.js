@@ -6,6 +6,7 @@ async function Unknown(context) {
   if (result?.status == 200 && result?.data && result.data?.function) {
     console.log(result['data']['function'])
     if (result['data']['function'] == "getNews") reply_news(context, result['data']['data']['news'])
+    else if (result['data']['function'] == "gSearch") reply_gSearch(context, result['data']['data'])
     else await context.sendText(result['data']['data'])
 
   }
@@ -26,6 +27,16 @@ const reply_news = async (context, news) => {
 
   context.sendText(reply)
 }
+
+const reply_gSearch = async (context, datalist) => {
+  let reply = ""
+  await datalist.slice(-5).map(data => {
+    reply += data['title'] + "\n" + data['snippet'] + "\n" + data['displayLink'] + "\n\n"
+  })
+
+  context.sendText(reply)
+}
+
 module.exports = async function App(context) {
   return router([
     text('news', News),
