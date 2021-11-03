@@ -16,7 +16,7 @@ const getNews = async () => {
 
 const chatbot = async (context) => {
   try {
-    let res = await axios.post(backend_SERVERURL + `/chatbot`, { context }, {
+    let res = await axios.get(encodeURI(backend_SERVERURL + `/chatbot?context=`+context), {
       headers: {
         "content-type": "application/json",
       }
