@@ -37,7 +37,7 @@ const reply_news = async (context, news) => {
 const reply_gSearch = async (context, datalist) => {
   let reply = ""
   await datalist.slice(-5).map(data => {
-    reply += data['title'] + "\n" + data['snippet'] + "\n" + data['displayLink'] + "\n\n"
+    reply += data['title'] + "\n" + data['snippet'] + "\n" + data['link'] + "\n\n"
   })
 
   context.sendText(reply)
