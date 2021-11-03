@@ -3,12 +3,18 @@ const WEBAPI = require('./WebAPI');
 
 async function Unknown(context) {
   const result = await WEBAPI.chatbot(context.event.text)
-  if (result?.status == 200 && result?.data && result.data?.function) {
-    console.log(result['data']['function'])
-    if (result['data']['function'] == "getNews") reply_news(context, result['data']['data']['news'])
-    else if (result['data']['function'] == "gSearch") reply_gSearch(context, result['data']['data'])
-    else await context.sendText(result['data']['data'])
-
+  if (result?.status == 200) {
+    switch (result.headers['function']) {
+      case 'getNews':
+        reply_news(context, result['data']['data']['news'])
+        break;
+      case 'gSearch':
+        reply_gSearch(context, result['data']['data'])
+        break;
+      default:
+        context.sendText(result['data']['data'])
+        break;
+    }
   }
 }
 
