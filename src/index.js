@@ -8,6 +8,9 @@ async function Unknown(context) {
       case 'getNews':
         reply_news(context, result['data']['data']['news'])
         break;
+      case 'getTrend':
+        reply_trend(context, result['data']['data'])
+        break;
       case 'getPrice':
         reply_price(context, result['data']['data'])
         break;
@@ -49,6 +52,20 @@ const reply_gSearch = async (context, datalist) => {
 const reply_price = async (context, price) => {
   context.sendText(context+": "+price)
 }
+
+const reply_trend = async (context, trend_imgurl) => {
+  const imagemap = {
+    baseUrl: trend_imgurl,
+    baseSize: {
+      height: 1000,
+      width: 1400,
+    },
+    actions: [],
+  };
+  const altText = 'BTC/USD trend';
+  await context.sendImagemap(altText, imagemap);
+}
+
 module.exports = async function App(context) {
   return router([
     text('news', News),
