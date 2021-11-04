@@ -60,6 +60,7 @@ const reply_trend = async (context, img_data) => {
       height: img_data['height'],
       width: img_data['width'],
     },
+    actions: [],
   };
   const altText = 'BTC/USD trend';
   await context.sendImagemap(altText, imagemap);
