@@ -50,7 +50,7 @@ const reply_gSearch = async (context, datalist) => {
 }
 
 const reply_price = async (context, price) => {
-  context.sendText(context+": "+price)
+  context.sendText(context.event.text+": "+price)
 }
 
 const reply_trend = async (context, img_data) => {
