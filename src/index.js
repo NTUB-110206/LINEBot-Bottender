@@ -53,14 +53,13 @@ const reply_price = async (context, price) => {
   context.sendText(context+": "+price)
 }
 
-const reply_trend = async (context, trend_imgurl) => {
+const reply_trend = async (context, img_data) => {
   const imagemap = {
-    baseUrl: trend_imgurl,
+    baseUrl: img_data['img_url'],
     baseSize: {
-      height: 1000,
-      width: 1400,
+      height: img_data['height'],
+      width: img_data['width'],
     },
-    actions: [],
   };
   const altText = 'BTC/USD trend';
   await context.sendImagemap(altText, imagemap);
