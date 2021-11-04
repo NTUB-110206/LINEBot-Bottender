@@ -8,6 +8,9 @@ async function Unknown(context) {
       case 'getNews':
         reply_news(context, result['data']['data']['news'])
         break;
+      case 'getPrice':
+        reply_price(context, result['data']['data'])
+        break;
       case 'gSearch':
         reply_gSearch(context, result['data']['data'])
         break;
@@ -43,6 +46,9 @@ const reply_gSearch = async (context, datalist) => {
   context.sendText(reply)
 }
 
+const reply_price = async (context, price) => {
+  context.sendText(context+": "+price)
+}
 module.exports = async function App(context) {
   return router([
     text('news', News),
