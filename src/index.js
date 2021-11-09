@@ -82,6 +82,11 @@ const reply_trend = async (context, img_data) => {
   await context.sendImagemap(altText, imagemap);
 }
 
+const colorPicker = async (img_url) => {
+  const colors = await getColors(img_url)
+  return colors[1].hex() + 'cc'
+}
+
 module.exports = async function App(context) {
   return router([
     text('news', News),
