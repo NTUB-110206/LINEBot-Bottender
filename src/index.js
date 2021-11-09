@@ -84,7 +84,7 @@ const reply_trend = async (context, img_data) => {
 
 const colorPicker = async (img_url) => {
   const colors = await getColors(img_url)
-  return colors[1].hex() + 'cc'
+  return colors[0].hex() + 'cc'
 }
 
 module.exports = async function App(context) {
