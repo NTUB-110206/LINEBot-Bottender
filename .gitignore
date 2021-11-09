@@ -1,5 +1,6 @@
 *!start.bat
 *!upload.bat
+.DS_Store
 
 # Taken from https://github.com/github/gitignore/blob/master/Node.gitignore
 
