@@ -1,5 +1,6 @@
 const { router, text } = require('bottender/router');
 const WEBAPI = require('./WebAPI');
+const utils = require('./utils');
 const temp = require('./temp');
 const getColors = require('get-image-colors');
 const _ = require('lodash');
@@ -37,7 +38,7 @@ async function News(context) {
 const reply_news = async (context, news) => {
   let reply = _.cloneDeep(temp.news_carousel)
 
-  await Promise.all(news.slice(-10).map(async (news) => {
+  await Promise.all(utils.arrUnique(news, 'news_title').slice(-10).map(async (news) => {
     let content = _.cloneDeep(temp.news_contents)
 
     content['body']['contents'][0]['url'] = news['img_link']
@@ -52,7 +53,6 @@ const reply_news = async (context, news) => {
     reply['contents'].push(content)
 
   }))
-  
   await context.sendFlex('news', reply)
 }
 
